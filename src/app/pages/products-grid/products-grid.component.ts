@@ -69,5 +69,6 @@ export class ProductsGridComponent {
     }
   ]);
 
-  filteredProducts = computed(() => this.products().filter(p => p.catergory.toLowerCase() === this.category().toLocaleLowerCase()));
+  filteredProducts = computed(() =>
+    this.products().filter(p => p.catergory.toLowerCase() === this.category().toLocaleLowerCase()));
 }
