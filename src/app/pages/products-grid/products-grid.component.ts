@@ -19,12 +19,47 @@ export class ProductsGridComponent {
   store = inject(EcommerceStore);
   categories = signal<string[]>(['all', 'Electronics', 'Wearables', 'Accessories', 'Audio', 'Furniture', 'Outdoors', 'Home', 'Bags', 'Kitchen', 'Fitness', 'Decor', 'Stationery']);
 
+  currentPage = signal(1);
+  pageSize = 8;
+
+  totalPages = computed(() =>
+    Math.max(1, Math.ceil(this.store.filteredProducts().length / this.pageSize))
+  );
+
+  pages = computed(() =>
+    Array.from({ length: this.totalPages() }, (_, i) => i + 1)
+  );
+
+  paginatedProducts = computed(() => {
+    const start = (this.currentPage() - 1) * this.pageSize;
+    return this.store.filteredProducts().slice(start, start + this.pageSize);
+  });
+
+  
   constructor() {
     effect(() => {
       console.log('Selected category:', this.category())
     });
+
+    effect(() => {
+      this.category();
+      this.currentPage.set(1);
+    });
   }
+
   onCategoryClick(cat: string) {
     this.store.setCategory(cat);
+  }
+  goToPage(page: number) {
+    if (page < 1 || page > this.totalPages()) return;
+    this.currentPage.set(page);
+  }
+
+  prevPage() {
+    this.goToPage(this.currentPage() - 1);
+  }
+
+  nextPage() {
+    this.goToPage(this.currentPage() + 1);
   }
 }

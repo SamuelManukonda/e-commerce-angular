@@ -15,14 +15,35 @@
     <!-- Product Grid -->
     <main class="col-12 col-md-9 col-lg-10 main-content">
       <h1 class="page-heading bold">{{ category()  | titlecase }}</h1>
-      <p class = "text-muted mb-3"> {{ store.filteredProducts().length }} products found</p>
+      <p class="text-muted mb-3">{{ store.filteredProducts().length }} products found</p>
+
       <div class="row g-4">
-        @for (product of store.filteredProducts(); track product.id) {
+        @for (product of paginatedProducts(); track product.id) {
         <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
           <app-product-card [product]="product"></app-product-card>
         </div>
         }
       </div>
+
+      @if (totalPages() > 1) {
+      <nav class="mt-4 d-flex justify-content-center" aria-label="Products pagination">
+        <ul class="pagination">
+          <li class="page-item" [class.disabled]="currentPage() === 1">
+            <button class="page-link" type="button" (click)="prevPage()">Previous</button>
+          </li>
+
+          @for (page of pages(); track page) {
+          <li class="page-item" [class.active]="page === currentPage()">
+            <button class="page-link" type="button" (click)="goToPage(page)">{{ page }}</button>
+          </li>
+          }
+
+          <li class="page-item" [class.disabled]="currentPage() === totalPages()">
+            <button class="page-link" type="button" (click)="nextPage()">Next</button>
+          </li>
+        </ul>
+      </nav>
+      }
     </main>
   </div>
 </div>
