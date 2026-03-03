@@ -7,5 +7,5 @@ export type Product = {
     rating: number;
     reviewCount: number;
     inStock: boolean;
-    catergory: string;
+    category: string;
 }

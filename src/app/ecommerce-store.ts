@@ -1,0 +1,208 @@
+import { signalStore, withComputed, withMethods, withState, patchState } from "@ngrx/signals";
+import { Product } from "./models/product";
+import { computed } from "@angular/core";
+
+
+export type EcommerceState = {
+    products: Product[];
+    categories: string;
+}
+
+export const EcommerceStore = signalStore(
+    {
+        providedIn: 'root'
+    },
+
+    withState({
+        products: [{
+            id: 'p-1001',
+            name: 'Wireless Noise-Canceling Headphones',
+            description: 'Over-ear Bluetooth headphones with active noise cancellation and 30-hour battery.',
+            price: 129.99,
+            imageUrl: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800',
+            rating: 4.6,
+            reviewCount: 248,
+            inStock: true,
+            category: 'Electronics'
+        },
+        {
+            id: 'p-1002',
+            name: 'Smart Fitness Watch',
+            description: 'Tracks heart rate, sleep, and workouts with water-resistant design.',
+            price: 89.5,
+            imageUrl: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800',
+            rating: 4.3,
+            reviewCount: 172,
+            inStock: true,
+            category: 'Wearables'
+        },
+        {
+            id: 'p-1003',
+            name: 'Mechanical Keyboard',
+            description: 'Compact RGB keyboard with tactile switches for faster typing and gaming.',
+            price: 74.99,
+            imageUrl: 'https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?w=800',
+            rating: 4.7,
+            reviewCount: 319,
+            inStock: false,
+            category: 'Accessories'
+        },
+        {
+            id: 'p-1004',
+            name: 'Portable Bluetooth Speaker',
+            description: 'Compact speaker with deep bass, 12-hour playtime, and splash resistance.',
+            price: 45.0,
+            imageUrl: 'https://images.unsplash.com/photo-1589003077984-894e133dabab?w=800',
+            rating: 4.2,
+            reviewCount: 94,
+            inStock: true,
+            category: 'Audio'
+        },
+        {
+            id: 'p-1005',
+            name: 'Ergonomic Office Chair',
+            description: 'Breathable mesh chair with lumbar support and adjustable armrests.',
+            price: 199.0,
+            imageUrl: 'https://images.unsplash.com/photo-1580480055273-228ff5388ef8?w=800',
+            rating: 4.5,
+            reviewCount: 136,
+            inStock: true,
+            category: 'Furniture'
+        },
+        {
+            id: 'p-1006',
+            name: 'Stainless Steel Water Bottle',
+            description: 'Insulated 24oz bottle that keeps drinks cold for 24 hours.',
+            price: 19.99,
+            imageUrl: 'https://images.unsplash.com/photo-1502741338009-cac2772e18bc?w=800',
+            rating: 4.4,
+            reviewCount: 87,
+            inStock: true,
+            category: 'Outdoors'
+        },
+        {
+            id: 'p-1007',
+            name: 'Minimalist Desk Lamp',
+            description: 'LED desk lamp with adjustable arm and three brightness levels.',
+            price: 32.5,
+            imageUrl: 'https://images.unsplash.com/photo-1493666438817-866a91353ca9?w=800',
+            rating: 4.1,
+            reviewCount: 62,
+            inStock: true,
+            category: 'Home'
+        },
+        {
+            id: 'p-1008',
+            name: 'Canvas Travel Backpack',
+            description: 'Durable 20L backpack with laptop sleeve and quick-access pockets.',
+            price: 54.0,
+            imageUrl: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=800',
+            rating: 4.6,
+            reviewCount: 141,
+            inStock: false,
+            category: 'Bags'
+        },
+        {
+            id: 'p-1009',
+            name: 'Ceramic Coffee Mug Set',
+            description: 'Set of four 12oz mugs with matte glaze and stackable design.',
+            price: 28.0,
+            imageUrl: 'https://images.unsplash.com/photo-1511920170033-f8396924c348?w=800',
+            rating: 4.3,
+            reviewCount: 53,
+            inStock: true,
+            category: 'Kitchen'
+        },
+        {
+            id: 'p-1010',
+            name: 'Ultra-Soft Throw Blanket',
+            description: 'Lightweight microfleece blanket for couch or bed, 50x60 inches.',
+            price: 24.99,
+            imageUrl: 'https://images.unsplash.com/photo-1481277542470-605612bd2d61?w=800',
+            rating: 4.5,
+            reviewCount: 118,
+            inStock: true,
+            category: 'Home'
+        },
+        {
+            id: 'p-1011',
+            name: 'Glass Meal Prep Containers',
+            description: 'Set of 5 leak-resistant containers with snap-lock lids.',
+            price: 34.0,
+            imageUrl: 'https://images.unsplash.com/photo-1542838132-92c53300491e?w=800',
+            rating: 4.4,
+            reviewCount: 97,
+            inStock: true,
+            category: 'Kitchen'
+        },
+        {
+            id: 'p-1012',
+            name: 'Yoga Mat Pro',
+            description: 'Non-slip 6mm mat with alignment lines and carry strap.',
+            price: 29.5,
+            imageUrl: 'https://images.unsplash.com/photo-1540206395-68808572332f?w=800',
+            rating: 4.2,
+            reviewCount: 76,
+            inStock: true,
+            category: 'Fitness'
+        },
+        {
+            id: 'p-1013',
+            name: 'Aromatic Soy Candle',
+            description: 'Hand-poured 8oz candle with lavender and cedar notes.',
+            price: 16.0,
+            imageUrl: 'https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=800',
+            rating: 4.6,
+            reviewCount: 45,
+            inStock: true,
+            category: 'Decor'
+        },
+        {
+            id: 'p-1014',
+            name: 'USB-C Charging Hub',
+            description: '6-port hub with fast charging and surge protection.',
+            price: 39.99,
+            imageUrl: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800',
+            rating: 4.1,
+            reviewCount: 110,
+            inStock: false,
+            category: 'Electronics'
+        },
+        {
+            id: 'p-1015',
+            name: 'Leather Journal',
+            description: 'Hardcover 200-page journal with dotted grid paper.',
+            price: 22.0,
+            imageUrl: 'https://images.unsplash.com/photo-1456324504439-367cee3b3c32?w=800',
+            rating: 4.7,
+            reviewCount: 64,
+            inStock: true,
+            category: 'Stationery'
+        },
+        {
+            id: 'p-1016',
+            name: 'Noise-Isolating Earbuds',
+            description: 'In-ear wired earbuds with inline mic and travel case.',
+            price: 18.75,
+            imageUrl: 'https://images.unsplash.com/photo-1518441902113-f9738b6e0096?w=800',
+            rating: 4.0,
+            reviewCount: 58,
+            inStock: true,
+            category: 'Audio'
+        }],
+        categories: 'all'
+    }),
+    withComputed(({ categories, products }) => ({
+        filteredProducts: computed(() => {
+            if (categories() === 'all') return products();
+            return products().filter((p) => p.category.toLowerCase() === categories().toLowerCase());
+        })
+    })),
+    withMethods((store) => ({
+        setCategory(category: string) {
+            patchState(store, { categories: category });
+        },
+    }))
+);
+
+
