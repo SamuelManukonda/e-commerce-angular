@@ -6,7 +6,7 @@ import { HeaderActionsComponent } from "../header-actions.component";
   standalone: true,
   imports: [HeaderActionsComponent],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
+  styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
 

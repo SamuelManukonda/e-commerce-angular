@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './header-actions.component.html',
-  styleUrl: './header-actions.component.scss'
+  styleUrls: ['./header-actions.component.scss']
 })
 export class HeaderActionsComponent {
 

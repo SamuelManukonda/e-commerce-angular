@@ -6,7 +6,7 @@ import { Product } from '../../models/product';
   standalone: true,
   imports: [],
   templateUrl: './product-card.component.html',
-  styleUrl: './product-card.component.scss'
+  styleUrls: ['./product-card.component.scss']
 })
 export class ProductCardComponent {
     product = input.required<Product>()

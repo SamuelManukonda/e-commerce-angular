@@ -11,7 +11,7 @@ import { EcommerceStore } from '../../ecommerce-store';
   standalone: true,
   imports: [ProductCardComponent, RouterLink, TitleCasePipe],
   templateUrl: './products-grid.component.html',
-  styleUrl: './products-grid.component.scss'
+  styleUrls: ['./products-grid.component.scss']
 })
 export class ProductsGridComponent {
 
@@ -37,6 +37,7 @@ export class ProductsGridComponent {
 
   
   constructor() {
+    this.store.loadProducts();
     effect(() => {
       console.log('Selected category:', this.category())
     });

@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './my-wishlist.component.html',
-  styleUrl: './my-wishlist.component.scss'
+  styleUrls: ['./my-wishlist.component.scss']
 })
 export class MyWishlistComponent {
 
