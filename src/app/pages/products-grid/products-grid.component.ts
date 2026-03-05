@@ -45,7 +45,7 @@ export class ProductsGridComponent {
     effect(() => {
       this.category();
       this.currentPage.set(1);
-    });
+    }, { allowSignalWrites: true });
   }
 
   onCategoryClick(cat: string) {
