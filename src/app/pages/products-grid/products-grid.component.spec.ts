@@ -4,6 +4,7 @@ import { EcommerceStore } from '../../ecommerce-store';
 import { ActivatedRoute } from '@angular/router';
 import { signal, WritableSignal } from '@angular/core';
 import { Product } from '../../models/product';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('ProductsGridComponent', () => {
   let component: ProductsGridComponent;
@@ -33,7 +34,7 @@ describe('ProductsGridComponent', () => {
     };
 
     await TestBed.configureTestingModule({
-      imports: [ProductsGridComponent],
+      imports: [ProductsGridComponent, HttpClientTestingModule],
       providers: [
         { provide: EcommerceStore, useValue: mockStore },
         { provide: ActivatedRoute, useValue: { snapshot: { params: { category: 'all' } } } }

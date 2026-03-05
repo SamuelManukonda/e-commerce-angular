@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HeaderActionsComponent } from './header-actions.component';
 import { By } from '@angular/platform-browser';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('HeaderActionsComponent', () => {
   let component: HeaderActionsComponent;
@@ -8,7 +9,7 @@ describe('HeaderActionsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HeaderActionsComponent]
+      imports: [HeaderActionsComponent, HttpClientTestingModule]
     }).compileComponents();
 
     fixture = TestBed.createComponent(HeaderActionsComponent);
