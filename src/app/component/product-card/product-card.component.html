@@ -14,8 +14,9 @@
             <span class="h5 fw-bold text-primary mb-0">${{ product().price }}</span>
             <button type="button" 
                     class="btn btn-primary add-to-cart" 
-                    [disabled]="!product().inStock"
-                    (click)="product().inStock && addToCartClicked.emit(product())">
+                    [disabled]="!product().inStock" 
+                    (click)="store.addToCart(product())">
+                    
                 Add to cart
             </button>
         </div>
