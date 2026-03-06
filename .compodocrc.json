@@ -1,0 +1,13 @@
+{
+  "name": "E-Commerce Angular App",
+  "output": "docs",
+  "theme": "material",
+  "hideGenerator": true,
+  "disableCoverage": false,
+  "disablePrivate": false,
+  "disableProtected": false,
+  "disableInternal": false,
+  "disableLifeCycleHooks": false,
+  "disableRoutesGraph": false,
+  "disableSearch": false
+}
