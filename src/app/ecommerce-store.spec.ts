@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { EcommerceStore } from './ecommerce-store';
 import { Product } from './models/product';
-import { CartItem } from './models/cart';
+
 
 describe('EcommerceStore', () => {
   let store: any;

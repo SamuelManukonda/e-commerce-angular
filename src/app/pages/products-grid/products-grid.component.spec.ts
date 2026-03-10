@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ProductsGridComponent } from './products-grid.component';
 import { EcommerceStore } from '../../ecommerce-store';
 import { ActivatedRoute } from '@angular/router';
-import { signal, WritableSignal } from '@angular/core';
+import { signal } from '@angular/core';
 import { Product } from '../../models/product';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 

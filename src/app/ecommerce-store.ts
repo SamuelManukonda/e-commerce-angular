@@ -12,12 +12,12 @@ import { HttpClient } from '@angular/common/http';
 import { lastValueFrom } from 'rxjs';
 import { produce } from 'immer';
 
-export type EcommerceState = {
+export interface EcommerceState {
   products: Product[];
   categories: string;
   wishListItems: Product[];
   cartItems: CartItem[];
-};
+}
 
 export const EcommerceStore = signalStore(
   {
